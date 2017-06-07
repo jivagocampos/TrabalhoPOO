@@ -11,7 +11,6 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import com.sistemaacademico.domain.disciplina.Disciplina;
-import com.sistemaacademico.domain.turma.Turma;
 
 @Entity
 public class Curso {
@@ -19,32 +18,17 @@ public class Curso {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
 	@NotNull
-	private String nome;
-	
 	private String descricao;
-	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Disciplina> disciplinas;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Turma> turmas;
-
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 	public String getDescricao() {
@@ -63,25 +47,10 @@ public class Curso {
 		this.disciplinas = disciplinas;
 	}
 
-	public List<Turma> getTurmas() {
-		return turmas;
-	}
-
-	public void setTurmas(List<Turma> turmas) {
-		this.turmas = turmas;
-	}
-
-	public Curso(Long id, String nome, String descricao, List<Disciplina> disciplinas, List<Turma> turmas) {
+	public Curso(Long id, String descricao, List<Disciplina> disciplinas) {
 		super();
 		this.id = id;
-		this.nome = nome;
 		this.descricao = descricao;
 		this.disciplinas = disciplinas;
-		this.turmas = turmas;
 	}
-
-	public Curso() {
-		super();
-	}
-
 }

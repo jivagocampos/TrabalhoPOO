@@ -30,24 +30,23 @@ public class MatriculaResource {
 		return matriculaRepository.findAll();
 	}
 	
-	@PostMapping
-	public boolean saveMatricula(@RequestBody Matricula matricula) {
-		return matriculaService.fazerMatricula(matricula);
-	}
-	
 	@GetMapping(value = "/{id}")
 	public Matricula getMatricula(@PathVariable Long id) {
 		return matriculaRepository.findOne(id);
+	}
+	
+	@PostMapping
+	public boolean createMatricula(@RequestBody Matricula matricula) {
+		return matriculaService.fazerMatricula(matricula);
+	}
+	
+	@PutMapping(value = "/{id}")
+	public Matricula updateMatricula(@PathVariable Long id, @RequestBody Matricula matricula) {
+		return matriculaRepository.save(matricula);
 	}
 
 	@DeleteMapping(value = "/{id}")
 	public void removeMatricula(@PathVariable Long id) {
 		matriculaRepository.delete(id);
 	}
-
-	@PutMapping(value = "/{id}")
-	public Matricula updateMatricula(@PathVariable Long id, @RequestBody Matricula matricula) {
-		return matriculaRepository.save(matricula);
-	}
-	
 }

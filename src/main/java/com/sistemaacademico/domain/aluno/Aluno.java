@@ -4,46 +4,84 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-import com.sistemaacademico.domain.diario.Frequencia;
-import com.sistemaacademico.domain.disciplina.Disciplina;
+import com.sistemaacademico.domain.diario.Diario;
 import com.sistemaacademico.domain.matricula.Matricula;
-import com.sistemaacademico.domain.pessoa.Pessoa;
 
 @Entity
-public class Aluno extends Pessoa {
+public class Aluno {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
 	@NotNull
-	private int cadastro;
+	private String nome;
+
+	@NotNull
+	private String endereco;
+
+	@NotNull
+	private String telefone;
+
+	@NotNull
+	private int matricula;
 
 	@NotNull
 	private boolean situacao;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Frequencia> frequencia;
+	@NotNull
+	private String email;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Disciplina> disciplina;
+	private List<Diario> diario;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Matricula> matriculas;
 
-	public List<Matricula> getMatriculas() {
-		return matriculas;
+	public Long getId() {
+		return id;
 	}
 
-	public void setMatriculas(List<Matricula> matriculas) {
-		this.matriculas = matriculas;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public int getCadastro() {
-		return cadastro;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setCadastro(int cadastro) {
-		this.cadastro = cadastro;
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public int getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(int matricula) {
+		this.matricula = matricula;
 	}
 
 	public boolean isSituacao() {
@@ -54,38 +92,45 @@ public class Aluno extends Pessoa {
 		this.situacao = situacao;
 	}
 
-	public List<Frequencia> getFrequencia() {
-		return frequencia;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setFrequencia(List<Frequencia> frequencia) {
-		this.frequencia = frequencia;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public List<Disciplina> getDisciplina() {
-		return disciplina;
-	}
-
-	public void setDisciplina(List<Disciplina> disciplina) {
-		this.disciplina = disciplina;
-	}
-
-	public Aluno(Long id, String nome, String endereco, String telefone, String email,  int cadastro, boolean situacao,
-			List<Frequencia> frequencia, List<Disciplina> disciplina,
-			List<Matricula> matriculas) {
-		super(id, nome, endereco, telefone, email);
-		this.cadastro = cadastro;
+	public Aluno(Long id, String nome, String endereco, String telefone, int matricula, boolean situacao,
+			String email) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.endereco = endereco;
+		this.telefone = telefone;
+		this.matricula = matricula;
 		this.situacao = situacao;
-		this.frequencia = frequencia;
-		this.disciplina = disciplina;
+		this.email = email;
+	}
+
+	public List<Matricula> getMatriculas() {
+		return matriculas;
+	}
+
+	public void setMatriculas(List<Matricula> matriculas) {
 		this.matriculas = matriculas;
 	}
 
-	public Aluno(Long id, String nome, String endereco, String telefone, String email) {
-		super(id, nome, endereco, telefone, email);
+	public List<Diario> getDiario() {
+		return diario;
 	}
 
-	public Aluno() {
+	public void setFrequencia(List<Diario> diario) {
+		this.diario = diario;
+	}
+
+	public Aluno(List<Diario> diario, List<Matricula> matriculas) {
 		super();
+		this.diario = diario;
+		this.matriculas = matriculas;
 	}
 }

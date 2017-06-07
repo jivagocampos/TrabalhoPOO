@@ -28,7 +28,7 @@ public class HistoricoResource {
 	}
 	
 	@PostMapping
-	public Historico saveHistorico(@RequestBody Historico historico) {
+	public Historico createHistorico(@RequestBody Historico historico) {
 		return historicoRepository.save(historico);
 	}
 	
@@ -36,6 +36,5 @@ public class HistoricoResource {
 	public Collection<Historico> getAprovados(@RequestBody Collection<Disciplina> disciplinas) {
 		return historicoRepository.findByDisciplinaInAndAprovadoTrue(disciplinas);
 	}
-	
 }
 

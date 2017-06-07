@@ -27,24 +27,23 @@ public class DisciplinaResource {
 		return disciplinaRepository.findAll();
 	}
 	
-	@PostMapping
-	public Disciplina saveDisciplina(@RequestBody Disciplina disciplina) {
-		return disciplinaRepository.save(disciplina);
-	}
-	
 	@GetMapping(value="/{id}")
 	public Disciplina getById(@PathVariable Long id) {
 		return disciplinaRepository.findOne(id);
 	}
-		
-	@DeleteMapping(value="/{id}")
-	public void removeDisciplina(@PathVariable Long id) {
-		disciplinaRepository.delete(id);
+	
+	@PostMapping
+	public Disciplina createDisciplina(@RequestBody Disciplina disciplina) {
+		return disciplinaRepository.save(disciplina);
 	}
 	
 	@PutMapping(value = "/{id}")
 	public Disciplina updateDisciplina(@PathVariable Long id, @RequestBody Disciplina disciplina) {
 		return disciplinaRepository.save(disciplina);
 	}
-	
+			
+	@DeleteMapping(value="/{id}")
+	public void removeDisciplina(@PathVariable Long id) {
+		disciplinaRepository.delete(id);
+	}
 }

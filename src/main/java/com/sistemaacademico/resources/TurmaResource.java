@@ -24,7 +24,7 @@ public class TurmaResource {
 	}
 	
 	@PostMapping
-	public Turma saveTurma(@RequestBody Turma turma) {
+	public Turma createTurma(@RequestBody Turma turma) {
 		return repositorio.save(turma);
 	}
 
@@ -47,5 +47,4 @@ public class TurmaResource {
 	public Turma updateTurma(@PathVariable Long id, @RequestBody Turma turma) {
 		return repositorio.save(turma);
 	}
-
 }

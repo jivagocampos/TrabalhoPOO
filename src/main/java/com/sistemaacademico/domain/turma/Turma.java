@@ -1,17 +1,12 @@
 package com.sistemaacademico.domain.turma;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-import com.sistemaacademico.domain.aluno.Aluno;
-import com.sistemaacademico.domain.curso.Curso;
 import com.sistemaacademico.domain.semestre.Semestre;
 
 @Entity
@@ -22,32 +17,17 @@ public class Turma {
 	private int id;
 
 	@NotNull
-	private String nome;
-
-	@OneToMany
-	private List<Aluno> alunos;
-
-	@NotNull
-	private int limiteAluno;
-
-	@NotNull
-	private boolean situacao;
+	private int ano;
 
 	@NotNull
 	@ManyToOne
 	private Semestre semestre;
 
 	@NotNull
-	@ManyToOne
-	private Curso curso;
+	private int diaSemana;
 
-	public Curso getCurso() {
-		return curso;
-	}
-
-	public void setCurso(Curso curso) {
-		this.curso = curso;
-	}
+	@NotNull
+	private String horario;
 
 	public int getId() {
 		return id;
@@ -57,36 +37,12 @@ public class Turma {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public int getAno() {
+		return ano;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public List<Aluno> getAlunos() {
-		return alunos;
-	}
-
-	public void setAlunos(List<Aluno> alunos) {
-		this.alunos = alunos;
-	}
-
-	public int getLimiteAluno() {
-		return limiteAluno;
-	}
-
-	public void setLimiteAluno(int limiteAluno) {
-		this.limiteAluno = limiteAluno;
-	}
-
-	public boolean isSituacao() {
-		return situacao;
-	}
-
-	public void setSituacao(boolean situacao) {
-		this.situacao = situacao;
+	public void setAno(int ano) {
+		this.ano = ano;
 	}
 
 	public Semestre getSemestre() {
@@ -97,20 +53,28 @@ public class Turma {
 		this.semestre = semestre;
 	}
 
-	public Turma(int id, String nome, List<Aluno> alunos, int limiteAluno, boolean situacao, Semestre semestre,
-			Curso curso) {
+	public int getDiaSemana() {
+		return diaSemana;
+	}
+
+	public void setDiaSemana(int diaSemana) {
+		this.diaSemana = diaSemana;
+	}
+
+	public String getHorario() {
+		return horario;
+	}
+
+	public void setHorario(String horario) {
+		this.horario = horario;
+	}
+
+	public Turma(int id, int ano, Semestre semestre, int diaSemana, String horario) {
 		super();
 		this.id = id;
-		this.nome = nome;
-		this.alunos = alunos;
-		this.limiteAluno = limiteAluno;
-		this.situacao = situacao;
+		this.ano = ano;
 		this.semestre = semestre;
-		this.curso = curso;
+		this.diaSemana = diaSemana;
+		this.horario = horario;
 	}
-
-	public Turma() {
-		super();
-	}
-
 }

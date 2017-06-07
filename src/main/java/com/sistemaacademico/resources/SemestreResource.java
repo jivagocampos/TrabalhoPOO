@@ -20,11 +20,11 @@ public class SemestreResource {
 
 	public SemestreResource(SemestreRepository semestreRepository) {
 		this.semestreRepository = semestreRepository;
-
+		
 	}
 
 	@PostMapping
-	public Semestre saveSemestre(@RequestBody Semestre semestre) {
+	public Semestre createSemestre(@RequestBody Semestre semestre) {
 		return semestreRepository.save(semestre);
 	}
 
@@ -33,19 +33,18 @@ public class SemestreResource {
 		return semestreRepository.findAll();
 	}
 
-	@GetMapping(value = "/{id}")
+	@GetMapping(value="/{id}")
 	public Semestre getById(@PathVariable Long id) {
 		return semestreRepository.findOne(id);
+	}
+	
+	@PutMapping(value = "/{id}")
+	public Semestre updateSemestre(@PathVariable Long id, @RequestBody Semestre semestre) {
+		return semestreRepository.save(semestre);
 	}
 
 	@DeleteMapping(value = "/{id}")
 	public void removeSemestre(@PathVariable Long id) {
 		semestreRepository.delete(id);
 	}
-
-	@PutMapping(value = "/{id}")
-	public Semestre updateSemestre(@PathVariable Long id, @RequestBody Semestre semestre) {
-		return semestreRepository.save(semestre);
-	}
-
 }

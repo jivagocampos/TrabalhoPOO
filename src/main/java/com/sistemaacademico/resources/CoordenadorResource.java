@@ -23,19 +23,19 @@ public class CoordenadorResource {
 		this.repositorio = repositorio;
 	}
 
-	@PostMapping
-	public Coordenador saveCordenador(@RequestBody Coordenador coordenador) {
-		return repositorio.save(coordenador);
-	}
-
 	@GetMapping
-	public Iterable<Coordenador> getAllCordenadores() {
+	public Iterable<Coordenador> getAllCoordenadores() {
 		return repositorio.findAll();
 	}
 
 	@GetMapping(value = "/{id}")
 	public Coordenador getById(@PathVariable Long id) {
 		return repositorio.findOne(id);
+	}
+	
+	@PostMapping
+	public Coordenador createCoordenador(@RequestBody Coordenador coordenador) {
+		return repositorio.save(coordenador);
 	}
 
 	@PutMapping(value = "/{id}")
@@ -47,5 +47,4 @@ public class CoordenadorResource {
 	public void removeCoordenador(@PathVariable Long id) {
 		repositorio.delete(id);
 	}
-
 }

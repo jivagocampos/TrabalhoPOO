@@ -27,15 +27,15 @@ public class AlunoResource {
 		return alunoRepository.findAll();
 	}
 	
-	@PostMapping
-	public Aluno saveAluno(@RequestBody Aluno aluno) {
-		return alunoRepository.save(aluno);
-	}
-	
 	@GetMapping(value="/{id}")
 	public Aluno getById(@PathVariable Long id) {
 		return alunoRepository.findOne(id);
 	}
+	
+	@PostMapping
+	public Aluno createAluno(@RequestBody Aluno aluno) {
+		return alunoRepository.save(aluno);
+	}	
 	
 	@PutMapping(value="/{id}")
 	public Aluno updateAluno(@PathVariable Long id, @RequestBody Aluno aluno) {
@@ -45,6 +45,5 @@ public class AlunoResource {
 	@DeleteMapping(value="/{id}")
 	public void removeAluno(@PathVariable Long id) {
 		alunoRepository.delete(id);
-	}
-	
+	}	
 }

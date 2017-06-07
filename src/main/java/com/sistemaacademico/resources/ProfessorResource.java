@@ -24,7 +24,7 @@ public class ProfessorResource {
 	}
 	
 	@PostMapping
-	public Professor saveProfessor(@RequestBody Professor professor) {
+	public Professor createProfessor(@RequestBody Professor professor) {
 		return repositorio.save(professor);
 	}
 
@@ -47,5 +47,4 @@ public class ProfessorResource {
 	public Professor updateProfessor(@PathVariable Long id, @RequestBody Professor professor) {
 		return repositorio.save(professor);
 	}
-
 }
