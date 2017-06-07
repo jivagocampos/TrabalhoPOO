@@ -14,7 +14,7 @@ import com.sistemaacademico.domain.diario.Diario;
 import com.sistemaacademico.domain.matricula.Matricula;
 
 @Entity
-public class Aluno {
+public class Aluno  {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
